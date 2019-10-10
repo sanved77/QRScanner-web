@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JSON Maker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script>
+      function makeQRCode () {
+        var qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=";
+        var name = document.getElementById("name").value;
+        var morning = document.getElementById("morning").value;
+        var afternoon = document.getElementById("afternoon").value;
+        var night = document.getElementById("night").value;
+        var content = name + "|" + morning  + "|" + afternoon  + "|" + night;
+
+        document.getElementById("qrcode").src = qrUrl + content;
+      }
+
+    </script>
+    <link rel="shortcut icon" href="fav.png" />
+  </head>
+  <body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+        QR Prescription Maker
+      </h1>
+    </br>
+      <p class="subtitle">
+        Enter name of the Pill <strong>below</strong>
+      </p>
+      <input id="name" class="input" type="text" placeholder="Pill name">  
+      </br>
+      </br>
+      <p class="subtitle">
+        How many pills in the <strong>morning</strong>
+      </p>
+      <input id="morning" style="width:200px" value="0" class="input is-medium" type="number" placeholder="Medium input">
+      </br></br>
+      <p class="subtitle">
+        How many pills in the <strong>afternoon</strong>
+      </p>
+      <input id="afternoon" style="width:200px" value="0" class="input is-medium" type="number" placeholder="Medium input">
+      </br></br>
+      <p class="subtitle">
+        How many pills in the <strong>night</strong>
+      </p>
+      <input id="night" style="width:200px" value="0" class="input is-medium" type="number" placeholder="Medium input">
+      </br>
+      </br>
+      </br>
+      <a onclick="makeQRCode()" class="button is-success is-large">
+          <span class="icon is-small">
+            <i class="fas fa-qrcode"></i>
+          </span>
+          <span>Create QR Code</span>
+        </a>
+        <br>
+        <p id="errMsg" class="content is-medium" style="color:red; padding-top:16px"></p>
+
+      <img id="qrcode">
+    </div>
+    
+  </section>
+  </body>
+</html>
